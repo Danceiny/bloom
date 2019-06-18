@@ -6,7 +6,7 @@ Port <https://github.com/willf/bloom> to redis backend
 
 **Difference**
 
-|bloom (by willf)|bloom.go (by Danceiny)|
+|bloom (by willf)|go.bloom (by Danceiny)|
 |---|---|
 |API: `bloom.New`|renamed to API: `bloom.NewMemoryBloomFilter`|
 |no persistence backend|support persistence backend interface, and redis backend provided already|
@@ -68,7 +68,7 @@ Godoc documentation: https://godoc.org/github.com/Danceiny/bloom
 ## Installation
 
 ```bash
-go get -u github.com/Danceiny/bloom.go
+go get -u github.com/Danceiny/go.bloom
 ```
 
 ## Contributing
