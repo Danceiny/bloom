@@ -2,14 +2,14 @@ Bloom filters with redis backend
 
 Port <https://github.com/willf/bloom> to redis backend
 
->related test case should be passed, please see `bloom_test.TestBasicRedisBloomFilter`.
+>related test case should be passed, please see [bloom_test.TestBasicRedisBloomFilter](bloom_test.go).
 
 **Difference**
 
 |bloom (by willf)|bloom.go (by Danceiny)|
 |---|---|
 |API: `bloom.New`|renamed to API: `bloom.NewMemoryBloomFilter`|
-|no persistence backend|support persistence backend|
+|no persistence backend|support persistence backend interface, and redis backend provided already|
 
 You can implement `Storage` interface by yourself, enjoy it.
 
@@ -24,9 +24,7 @@ type Storage interface {
 
 -------------
 
-[![Master Build Status](https://secure.travis-ci.org/Danceiny/bloom.png?branch=master)](https://travis-ci.org/Danceiny/bloom?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/Danceiny/bloom/badge.svg?branch=master)](https://coveralls.io/github/Danceiny/bloom?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/Danceiny/bloom)](https://goreportcard.com/report/github.com/Danceiny/bloom)
 [![GoDoc](https://godoc.org/github.com/Danceiny/bloom?status.svg)](http://godoc.org/github.com/Danceiny/bloom)
 
 A Bloom filter is a representation of a set of _n_ items, where the main
