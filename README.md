@@ -6,9 +6,9 @@ Port <https://github.com/willf/bloom> to redis backend
 
 **Difference**
 
-|bloom by willf|bloom.go by Danceiny|
+|bloom (by willf)|bloom.go (by Danceiny)|
 |---|---|
-|API: `bloom.New`|API: `bloom.NewMemoryBloomFilter`|
+|API: `bloom.New`|renamed to API: `bloom.NewMemoryBloomFilter`|
 |no persistence backend|support persistence backend|
 
 You can implement `Storage` interface by yourself, enjoy it.
@@ -21,6 +21,7 @@ type Storage interface {
 	Test(offset uint) (bool, error)
 }
 ```
+
 -------------
 
 [![Master Build Status](https://secure.travis-ci.org/Danceiny/bloom.png?branch=master)](https://travis-ci.org/Danceiny/bloom?branch=master)
@@ -69,7 +70,7 @@ Godoc documentation: https://godoc.org/github.com/Danceiny/bloom
 ## Installation
 
 ```bash
-go get -u github.com/Danceiny/bloom
+go get -u github.com/Danceiny/bloom.go
 ```
 
 ## Contributing
