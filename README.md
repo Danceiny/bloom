@@ -1,4 +1,4 @@
-Bloom filters
+Bloom filters with redis backend
 -------------
 
 [![Master Build Status](https://secure.travis-ci.org/willf/bloom.png?branch=master)](https://travis-ci.org/willf/bloom?branch=master)

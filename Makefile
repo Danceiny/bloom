@@ -174,18 +174,18 @@ qa: fmtcheck test vet lint coverage cyclo ineffassign misspell structcheck varch
 
 # Get the dependencies
 deps:
-	GOPATH=$(GOPATH) go get ./...
-	GOPATH=$(GOPATH) go get github.com/golang/lint/golint
-	GOPATH=$(GOPATH) go get github.com/jstemmer/go-junit-report
-	GOPATH=$(GOPATH) go get github.com/axw/gocov/gocov
-	GOPATH=$(GOPATH) go get github.com/fzipp/gocyclo
-	GOPATH=$(GOPATH) go get github.com/gordonklaus/ineffassign
-	GOPATH=$(GOPATH) go get github.com/client9/misspell/cmd/misspell
-	GOPATH=$(GOPATH) go get github.com/opennota/check/cmd/structcheck
-	GOPATH=$(GOPATH) go get github.com/opennota/check/cmd/varcheck
-	GOPATH=$(GOPATH) go get github.com/kisielk/errcheck
-	GOPATH=$(GOPATH) go get honnef.co/go/tools/cmd/gosimple
-	GOPATH=$(GOPATH) go get github.com/GoASTScanner/gas
+	GOPATH=$(GOPATH) GO111MODULE=on go get ./...
+	GOPATH=$(GOPATH) GO111MODULE=on go get golang.org/x/lint/golint
+	GOPATH=$(GOPATH) GO111MODULE=on go get github.com/jstemmer/go-junit-report
+	GOPATH=$(GOPATH) GO111MODULE=on go get github.com/axw/gocov/gocov
+	GOPATH=$(GOPATH) GO111MODULE=on go get github.com/fzipp/gocyclo
+	GOPATH=$(GOPATH) GO111MODULE=on go get github.com/gordonklaus/ineffassign
+	GOPATH=$(GOPATH) GO111MODULE=on go get github.com/client9/misspell/cmd/misspell
+	GOPATH=$(GOPATH) GO111MODULE=on go get github.com/opennota/check/cmd/structcheck
+	GOPATH=$(GOPATH) GO111MODULE=on go get github.com/opennota/check/cmd/varcheck
+	GOPATH=$(GOPATH) GO111MODULE=on go get github.com/kisielk/errcheck
+	GOPATH=$(GOPATH) GO111MODULE=on go get honnef.co/go/tools/cmd/gosimple@2019.1.1
+	GOPATH=$(GOPATH) GO111MODULE=on go get github.com/GoASTScanner/gas
 
 # Remove any build artifact
 clean:
