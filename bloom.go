@@ -6,7 +6,7 @@ type BF interface {
 	Add([]byte) BF
 	Test([]byte) bool                  // test whether existed or not
 	TestAndAdd(data []byte) bool       // test and add
-	location(h [4]uint64, i uint) uint // do hash
+	Location(h [4]uint64, i uint) uint // do hash
 }
 
 type BackendType int

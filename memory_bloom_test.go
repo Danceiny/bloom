@@ -183,11 +183,11 @@ func min(a, b uint) uint {
 // The following function courtesy of Nick @turgon
 // This helper function ranges over the input data, applying the hashing
 // which returns the bit locations to set in the filter.
-// For each location, increment a counter for that bit address.
+// For each Location, increment a counter for that bit address.
 //
-// If the Bloom Filter's location() method distributes locations uniformly
+// If the Bloom Filter's Location() method distributes locations uniformly
 // at random, a property it should inherit from its hash function, then
-// each bit location in the filter should end up with roughly the same
+// each bit Location in the filter should end up with roughly the same
 // number of hits.  Importantly, the value of k should not matter.
 //
 // Once the results are collected, we can run a chi squared goodness of fit
@@ -201,7 +201,7 @@ func chiTestBloom(m, k, rounds uint, elements [][]byte) (succeeds bool) {
 	for _, data := range elements {
 		h := baseHashes(data)
 		for i := uint(0); i < f.k; i++ {
-			results[f.location(h, i)]++
+			results[f.Location(h, i)]++
 		}
 	}
 

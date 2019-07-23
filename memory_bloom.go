@@ -103,14 +103,14 @@ func baseHashes(data []byte) [4]uint64 {
 	}
 }
 
-// location returns the ith hashed location using the four base hash values
+// Location returns the ith hashed Location using the four base hash values
 func location(h [4]uint64, i uint) uint64 {
 	ii := uint64(i)
 	return h[ii%2] + ii*h[2+(((ii+(ii%2))%4)/2)]
 }
 
-// location returns the ith hashed location using the four base hash values
-func (f *MemoryBloomFilter) location(h [4]uint64, i uint) uint {
+// Location returns the ith hashed Location using the four base hash values
+func (f *MemoryBloomFilter) Location(h [4]uint64, i uint) uint {
 	return uint(location(h, i) % uint64(f.m))
 }
 
@@ -144,7 +144,7 @@ func (f *MemoryBloomFilter) K() uint {
 func (f *MemoryBloomFilter) Add(data []byte) BF {
 	h := baseHashes(data)
 	for i := uint(0); i < f.k; i++ {
-		f.b.Set(f.location(h, i))
+		f.b.Set(f.Location(h, i))
 	}
 	return f
 }
@@ -182,7 +182,7 @@ func (f *MemoryBloomFilter) AddString(data string) BF {
 func (f *MemoryBloomFilter) Test(data []byte) bool {
 	h := baseHashes(data)
 	for i := uint(0); i < f.k; i++ {
-		if !f.b.Test(f.location(h, i)) {
+		if !f.b.Test(f.Location(h, i)) {
 			return false
 		}
 	}
@@ -213,7 +213,7 @@ func (f *MemoryBloomFilter) TestAndAdd(data []byte) bool {
 	present := true
 	h := baseHashes(data)
 	for i := uint(0); i < f.k; i++ {
-		l := f.location(h, i)
+		l := f.Location(h, i)
 		if !f.b.Test(l) {
 			present = false
 		}

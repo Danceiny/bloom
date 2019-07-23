@@ -10,14 +10,14 @@ func (f *StorageBloomFilter) Add(data []byte) BF {
 	h := baseHashes(data)
 	_ = f.b.PrepareSet()
 	for i := uint(0); i < f.k; i++ {
-		f.b.Set(f.location(h, i))
+		f.b.Set(f.Location(h, i))
 	}
 	_ = f.b.FlushSet()
 	return f
 }
 
-// location returns the ith hashed location using the four base hash values
-func (f *StorageBloomFilter) location(h [4]uint64, i uint) uint {
+// Location returns the ith hashed Location using the four base hash values
+func (f *StorageBloomFilter) Location(h [4]uint64, i uint) uint {
 	return uint(location(h, i) % uint64(f.m))
 }
 
@@ -27,7 +27,7 @@ func (f *StorageBloomFilter) location(h [4]uint64, i uint) uint {
 func (f *StorageBloomFilter) Test(data []byte) bool {
 	h := baseHashes(data)
 	for i := uint(0); i < f.k; i++ {
-		var b, err = f.b.Test(f.location(h, i))
+		var b, err = f.b.Test(f.Location(h, i))
 		if err != nil || !b {
 			// we view it as false while backend error occurred
 			return false
@@ -40,7 +40,7 @@ func (f *StorageBloomFilter) TestAndAdd(data []byte) bool {
 	h := baseHashes(data)
 	_ = f.b.PrepareSet()
 	for i := uint(0); i < f.k; i++ {
-		l := f.location(h, i)
+		l := f.Location(h, i)
 		var v, err = f.b.Test(l)
 		if err != nil || !v {
 			present = false
