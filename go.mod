@@ -1,4 +1,4 @@
-module github.com/Danceiny/bloom
+module github.com/Danceiny/go.bloom
 
 go 1.12
 
